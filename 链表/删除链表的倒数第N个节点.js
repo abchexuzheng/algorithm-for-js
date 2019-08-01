@@ -16,10 +16,6 @@ var removeNthFromEnd = function(head, n) {
         val: null,
         next: head
     }
-    // 如果只有一个节点，就直接返回null
-    if (head.next === null) {
-        return null
-    }
     let current = head // 先行指针
     let current2 = head // 后行指针
     let i = 0
