@@ -8,15 +8,18 @@
 var solveNQueens = function(n) {
     const result = []   
     function getRowPos (rowIndex, arr = []) {
+        // n个棋子都放置完成，返回结果
         if (rowIndex === n) {
             result.push(arr)
             return
         }
         for (let col = 0; col < n; col ++) {
+            // 如果是第一行，就直接放入，然后跳到下一行
             if (rowIndex === 0) {
                 arr = [col]
                 getRowPos(rowIndex + 1, arr)
             } else {
+                // 判断是否符合要求，符合就插入并继续跳到下一行
                 if (isOk(rowIndex, col, arr)) {
                     const newArr = [...arr]
                     newArr.push(col)
@@ -32,12 +35,15 @@ var solveNQueens = function(n) {
         let rightTop = col + 1
         for (let i = row - 1; i >= 0; i --) {
             const lastPos = arr[i]
+            // 判断正上方是否有棋子
             if (lastPos === col) {
                 return false
             }
+            // 判断左上方是否有棋子
             if (leftTop >= 0 && lastPos === leftTop) {
                 return false
             }
+            // 判断右上方是否有棋子
             if (rightTop < n && lastPos === rightTop) {
                 return false
             }
